@@ -1,0 +1,11 @@
+<div>
+    <!-- De esta manera le damos al botón una función para que se ejecute al pulsarse -->
+    <button (click)="onSelectUser()">
+        <!-- A la hora de llamar la función la llamamos como si fuera un atributo, no como una función con los () -->
+        <!-- Si la imagen falla -> Aparecerá el nombre en su lugar -->
+        <img [src]="imagePath" [alt]="name"/>
+        
+        <!-- Con los dobles corchetes {{ }} puedes hacer referencia a cualquier elemento del .ts -->
+        <span>{{ name }}</span>
+    </button>
+</div>
