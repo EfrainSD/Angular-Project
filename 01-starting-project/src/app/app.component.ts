@@ -19,4 +19,10 @@ import { DUMMY_USERS } from './user/dummy-users';
 export class AppComponent
 {
   users = DUMMY_USERS;
+
+  // Vamos a crear una función que al pulsar a un usuario se active y nos envía el id de ese usuario
+  onUserSelected(userId: string) // Es olbigatorio decir el tipo de dato que recibe
+  {
+    console.log('User selected: ' + userId);
+  }
 }
