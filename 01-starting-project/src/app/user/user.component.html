@@ -3,9 +3,9 @@
     <button (click)="onSelectUser()">
         <!-- A la hora de llamar la función la llamamos como si fuera un atributo, no como una función con los () -->
         <!-- Si la imagen falla -> Aparecerá el nombre en su lugar -->
-        <img [src]="imagePath" [alt]="name"/>
+        <img [src]="imagePath" [alt]="user.name"/>
         
         <!-- Con los dobles corchetes {{ }} puedes hacer referencia a cualquier elemento del .ts -->
-        <span>{{ name }}</span>
+        <span>{{ user.name }}</span>
     </button>
 </div>

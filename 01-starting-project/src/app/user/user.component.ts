@@ -17,11 +17,19 @@ export class UserComponent
   // selectedUser = signal(randomUser); // Este atributo ahora es accesible en el HTML del componente
 
   // Necesitamos crear una variable que se pueda modificar desde fuera de esta scripts usando Decoradores
-  @Input({ required: true }) id!: string;
-  @Input({ required: true // Indicamos que es obligatorio pasar este valor desde fuera (y comprueba en nuestro código si siempre que lo usamos tiene un valor)
-  }) avatar!: string; // Usando el ! le indicamos que ahora mismo no esta inicizalizado pero que lo estará
+  // @Input({ required: true }) id!: string;
+  // @Input({ required: true // Indicamos que es obligatorio pasar este valor desde fuera (y comprueba en nuestro código si siempre que lo usamos tiene un valor)
+  // }) avatar!: string; // Usando el ! le indicamos que ahora mismo no esta inicizalizado pero que lo estará
 
-  @Input({ required: true }) name!: string;
+  // @Input({ required: true }) name!: string;
+
+  // Otra opción sería crear un solo objeto con esas características
+  @Input( { required: true }) user! :
+  {
+    id: string;
+    avatar: string;
+    name: string;
+  };
 
   // Ahora vamos a crear la misma variable pero usando signal
   // IMPORTANTE: En este caso las variables son solo de lectura, no las podemos cambiar más adelante de esta forma
@@ -32,7 +40,7 @@ export class UserComponent
   // imagePath = computed(() => 'assets/users/' + this.avatar());
 
   // Estar sería la forma normal sin signals
-  get imagePath() { return 'assets/users/' + this.avatar; }
+  get imagePath() { return 'assets/users/' + this.user.avatar; }
 
   // Vamos a crear un evento personalizado para notificar cuando se selecciona un usuario
   @Output() selectUser = new EventEmitter<string>(); // También podemos poner el tipo de datos, recomendado, pero es opcional
@@ -45,6 +53,6 @@ export class UserComponent
     // Debemos usar el set, ya que está dentro de un signal y así cambiamos su valor
     // this.selectedUser.set(DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)])
 
-    this.selectUser.emit(this.id); // Emitimos el evento para notificar que se ha seleccionado un usuario
+    this.selectUser.emit(this.user.id); // Emitimos el evento para notificar que se ha seleccionado un usuario
   }
 }
