@@ -1,7 +1,19 @@
-import { Component, Input, computed, input, Output, EventEmitter, output } from '@angular/core'; // Con mayúsculas es un "decorado" con minúsculas es una función especial
+import { Component, Input, computed, input, Output, EventEmitter, output } from '@angular/core'; // In uppercase letters it is a “decoration”; in lowercase letters it is a special function
 
-// Importamos los datos ficticios de usuarios
-// import { DUMMY_USERS } from './dummy-users';
+// To define data types, we can create them as follows
+type User = {
+  id : string;
+  avatar : string;
+  name : string;
+}
+
+// Another option is to create an interface instead of a type (MORE COMMON)
+interface UserInterface
+{
+  id : string;
+  avatar : string;
+  name : string;
+}
 
 @Component({
   selector: 'app-user',
@@ -13,46 +25,41 @@ import { Component, Input, computed, input, Output, EventEmitter, output } from 
 
 export class UserComponent
 {
-  // Con signal es una forma de notificar a Angular cuando un atributo cambia su valor y utilizar eso para otra cosa
-  // selectedUser = signal(randomUser); // Este atributo ahora es accesible en el HTML del componente
+  // SIGNALS: It is a way to notify Angular when an attribute changes its value and use that for something else
+  // selectedUser = signal(randomUser); // This attribute is accessible in the component's HTML
 
-  // Necesitamos crear una variable que se pueda modificar desde fuera de esta scripts usando Decoradores
+  // ANOTHER OPTION: Use @Input to receive data from outside the component (MOST COMMON)
   // @Input({ required: true }) id!: string;
-  // @Input({ required: true // Indicamos que es obligatorio pasar este valor desde fuera (y comprueba en nuestro código si siempre que lo usamos tiene un valor)
-  // }) avatar!: string; // Usando el ! le indicamos que ahora mismo no esta inicizalizado pero que lo estará
+  // @Input({ required: true // Indicate that it is mandatory to pass this value from outside (and check in our code that whenever we use it, it has a value)
+  // }) avatar!: string; // Using the !, we indicate that it is not initialized right now but that it will be
 
   // @Input({ required: true }) name!: string;
 
-  // Otra opción sería crear un solo objeto con esas características
-  @Input( { required: true }) user! :
-  {
-    id: string;
-    avatar: string;
-    name: string;
-  };
+  // Another option would be to create a single object with those characteristics
+  @Input( { required: true }) user! : UserInterface;
 
-  // Ahora vamos a crear la misma variable pero usando signal
-  // IMPORTANTE: En este caso las variables son solo de lectura, no las podemos cambiar más adelante de esta forma
-  // avatar = input.required<string>(); // Podemos decir de que tipo es y también marcarla como obligatorio
-  // name = input<string>(''); // Sino es obligatorio podemos darle un valor por defecto
+  // Now let's create the same variable but using signal
+  // IMPORTANT: In this case, the variables are read-only; we cannot change them later in this way
+  // avatar = input.required<string>(); // We can specify what type it is and also mark it as mandatory
+  // name = input<string>(''); // If it is not mandatory, we can give it a default value
 
-  // Ahora con las signals podemos usar computed para que solo se ejecuta cuando cambie el valor de selectedUser
+  // Now with signals, we can use computed so that it only runs when the value of selectedUser changes
   // imagePath = computed(() => 'assets/users/' + this.avatar());
 
-  // Estar sería la forma normal sin signals
+  // Being would be the normal form without signals
   get imagePath() { return 'assets/users/' + this.user.avatar; }
 
-  // Vamos a crear un evento personalizado para notificar cuando se selecciona un usuario
-  @Output() selectUser = new EventEmitter<string>(); // También podemos poner el tipo de datos, recomendado, pero es opcional
+  // Let's create a custom event to notify when a user is selected
+  @Output() selectUser = new EventEmitter<string>(); // We can also specify the data type, which is recommended but optional
 
-  // Otra opción es usando las signals
-  // selectUser = output<string>(); // No hay que hacer el new ya que lo hace internamente (es obligatorio decir el tipo de dato que emite)
+  // Another option is to use signals
+  // selectUser = output<string>(); // There is no need to use new, as it does this internally (it is mandatory to specify the type of data it outputs)
 
   onSelectUser()
   {
-    // Debemos usar el set, ya que está dentro de un signal y así cambiamos su valor
+    // We must use the set, since it is inside a signal, and thus we change its value
     // this.selectedUser.set(DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)])
 
-    this.selectUser.emit(this.user.id); // Emitimos el evento para notificar que se ha seleccionado un usuario
+    this.selectUser.emit(this.user.id); // We issue the event to notify that a user has been selected
   }
 }

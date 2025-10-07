@@ -2,47 +2,44 @@
 
 <main>
     <ul id = "users-list">
+        <!-- FOR: The track is mandatory. It serves to assign each object an identifier, so that if the list is dynamic, Angular can efficiently remove and add objects. -->
+        @for (user of users; track user.id)
+        {
+            <li>
+                <app-user
+                    [user]="user"
+                    (selectUser)="onUserSelected($event)"/>
+            </li>
+        }
+        <!-- LEGACY FOR: We add it to the element we want to repeat.
+        <li *ngFor="let user of users">
+            <app-user [user]="user" (selectUser)="onUserSelected($event)"/>
+        </li> -->
+
+        <!-- Most direct way
         <li>
-            <!-- Los 3 primeros son elementos Input por lo que nosotros le damos los valores-->
             <app-user
                 [user]="users[0]"
                 (selectUser)="onUserSelected($event)"
-            /> <!-- El último es un Output, por lo que nosotros le decimos que hacer.
-                    Usamos el $event de angular para almacenar el valor -->
-        </li>
-        <li>
-            <app-user
-                [user]="users[1]"
-                (selectUser)="onUserSelected($event)"
-            />
-        </li>
-        <li>
-            <app-user
-                [user]="users[2]"
-                (selectUser)="onUserSelected($event)"
-            />
-        </li>
-        <li>
-            <app-user
-                [user]="users[3]"
-                (selectUser)="onUserSelected($event)"
-            />
-        </li>
-        <li>
-            <app-user
-                [user]="users[4]"
-                (selectUser)="onUserSelected($event)"
-            />
-        </li>
-        <li>
-            <app-user
-                [user]="users[5]"
-                (selectUser)="onUserSelected($event)"
-            />
-        </li>
+            /> The last one is an Output, so we tell it what to do. We use Angular's $event to store the value.
+        </li> -->
     </ul>
 
-    <user-task
-        [userName]="selectedUserName"
-    />
+    <!-- IF -->
+    @if (selectedUserName)
+    {
+        <user-task [userName]="selectedUserName" />
+    }
+    @else
+    {
+        <h1>Select a user</h1>
+    }
+    <!-- There is also the else if -->
+    
+    <!-- LEGACY FOR: We add it to the element we want to repeat.
+    <user-task *ngIf="selectedUserName"; else fallback [userName]="selectedUserName!" />
+    <ng-template #fallback>
+        <h1>Select a user</h1>
+    </ng-template> -->
+
 </main>

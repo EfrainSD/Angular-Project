@@ -1,14 +1,13 @@
-// Importar el decorador Component desde Angular
 import { Component } from '@angular/core';
 
-// Configuramos el componente
+// Configure the component
 @Component({
-    selector: 'app-header', // Nombre del selector del componente
-    standalone : true, // Indicamos que es un componente independiente, por defecto suele estar a true de la versión 19 en adelante
-    templateUrl: './header.component.html', // Ruta al archivo HTML del componente
-    styleUrls: ['./header.component.css'], // Ruta al archivo CSS del componente
+    selector: 'app-header', // Component selector name
+    standalone : true, // Indicate that it is an independent component; by default, it is usually set to true from version 19 onwards.
+    templateUrl: './header.component.html', // Path to the component's HTML file
+    styleUrls: ['./header.component.css'], // Path to the component's CSS file
 })
 
-// Comenzamos exportando la clase que le dará nombra
+// Export the class and give it a name.
 export class HeaderComponent {}
 
