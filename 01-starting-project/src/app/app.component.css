@@ -1,41 +1,39 @@
 main {
-  width: 90%;
-  max-width: 50rem;
-  margin: 2.5rem auto;
-  display: grid;
-  grid-auto-flow: row;
-  gap: 2rem;
+  width: 90%;                /* Takes up 90% of the available width */
+  max-width: 50rem;          /* Limits the maximum width to keep content centered and readable */
+  margin: 2.5rem auto;       /* Adds vertical spacing and centers horizontally */
+  display: grid;             /* Uses CSS Grid layout for organizing inner elements */
+  grid-auto-flow: row;       /* Places grid items automatically in rows */
+  gap: 2rem;                 /* Adds space between grid items */
 }
 
 #users-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  list-style: none;          /* Removes default bullet points from the list */
+  margin: 0;                 /* Removes default outer spacing */
+  padding: 0;                /* Removes default inner spacing */
+  display: flex;             /* Uses Flexbox layout for list items */
+  flex-direction: column;    /* Aligns list items vertically */
+  gap: 0.5rem;               /* Adds spacing between list items */
 }
 
-#fallback {
-  font-weight: bold;
-  font-size: 1.15rem;
-  margin: 0;
-  text-align: center;
+/* Fallback message (displayed when no users are found, for example) */
+#fallback-text {
+  font-size: 1.15rem;        /* Sets slightly larger font size */
+  margin: 0;                 /* Removes default margin */
 }
 
 @media (min-width: 768px) {
   main {
-    margin: 4rem auto;
-    grid-template-columns: 1fr 3fr;
+    margin: 4rem auto;              /* Increases vertical margin for larger screens */
+    grid-template-columns: 1fr 3fr; /* Defines two columns: one narrow (sidebar) and one wide (content) */
   }
 
-  /* corregir selector para afectar la lista de usuarios */
   #users-list {
-    flex-direction: column;
+    flex-direction: column;  /* Keeps items stacked vertically (can be adjusted if needed) */
   }
 
   #fallback {
-    font-size: 1.5rem;
-    text-align: left;
+    font-size: 1.5rem;       /* Increases font size on larger screens */
+    text-align: left;        /* Aligns text to the left for a more natural layout on desktops */
   }
 }

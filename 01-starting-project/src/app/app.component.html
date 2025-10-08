@@ -2,7 +2,7 @@
 
 <main>
     <ul id = "users-list">
-        <!-- FOR: The track is mandatory. It serves to assign each object an identifier, so that if the list is dynamic, Angular can efficiently remove and add objects. -->
+        <!-- FOR: The track is obligatory. It serves to assign each object an identifier, so that if the list is dynamic, Angular can efficiently remove and add objects. -->
         @for (user of users; track user.id)
         {
             <li>
@@ -16,7 +16,7 @@
             <app-user [user]="user" (selectUser)="onUserSelected($event)"/>
         </li> -->
 
-        <!-- Most direct way
+        <!-- DIRECT WAY:
         <li>
             <app-user
                 [user]="users[0]"
@@ -28,18 +28,17 @@
     <!-- IF -->
     @if (selectedUserName)
     {
-        <user-task [userName]="selectedUserName" />
+        <tasks [userName]="selectedUserName" />
     }
     @else
     {
-        <h1>Select a user</h1>
+        <h1 id="fallback-text">Select a user</h1>
     }
     <!-- There is also the else if -->
     
-    <!-- LEGACY FOR: We add it to the element we want to repeat.
+    <!-- LEGACY IF: We add it to the element we want to repeat
     <user-task *ngIf="selectedUserName"; else fallback [userName]="selectedUserName!" />
     <ng-template #fallback>
         <h1>Select a user</h1>
     </ng-template> -->
-
 </main>

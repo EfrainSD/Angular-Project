@@ -1,52 +1,57 @@
 header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  width: 90%;
-  max-width: 50rem;
-  margin: 0 auto 2rem auto;
-  text-align: center;
+  display: flex;                    /* create a flex container to layout children */
+  flex-direction: column;           /* stack children vertically */
+  align-items: center;              /* center children horizontally along the cross axis */
+  gap: 1rem;                        /* space between child elements (replaces margins between them) */
+  width: 90%;                       /* occupy 90% of the parent's width (responsive) */
+  max-width: 50rem;                 /* prevent the header from growing too wide on large screens */
+  margin: 0 auto 2rem auto;         /* top:0, sides:auto (centers horizontally), bottom:2rem */
+  text-align: center;               /* center inline text inside the header */
   background: linear-gradient(
     to bottom,
-    #2c0a4c,
-    #450d80
+    #0b3d91,                      /* dark blue */
+    #66a0ff                       /* light blue */
   );
-  padding: 1rem;
-  border-bottom-right-radius: 12px;
-  border-bottom-left-radius: 12px;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  padding: 1rem;                    /* inner spacing between border and content */
+  border-bottom-right-radius: 12px; /* round bottom-right corner */
+  border-bottom-left-radius: 12px;  /* round bottom-left corner */
 }
 
 img {
-  width: 3.5rem;
-  object-fit: contain;
+  width: 3.5rem;        /* fixed width using rem (scales with root font-size) */
+  object-fit: contain;  /* preserve aspect ratio and avoid cropping the image */
 }
 
 h1 {
-  font-size: 1.25rem;
-  margin: 0;
-  padding: 0;
+  font-size: 1.25rem;   /* title size relative to root font-size */
+  margin: 0;            /* remove default browser margin */
+  padding: 0;           /* remove default browser padding */
+  color: #ffffff;     /* white for high contrast against the blue gradient */
+  font-weight: 600;     /* slightly bolder so it stands out */
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 
 p {
-  margin: 0;
-  font-size: 0.8rem;
-  text-wrap: balance;
+  margin: 0;            /* remove default browser margin */
+  font-size: 0.8rem;    /* smaller subtitle text */
+  text-wrap: balance;   /* attempt to balance line lengths (partial browser support) */
+  color: #ffffff;     /* white for high contrast against the blue gradient */
+  font-weight: 600;     /* slightly bolder so it stands out */
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) { /* Similar to IF (if something is fulfilled, the following code applies)*/
   header {
-    padding: 2rem;
+    padding: 2rem; /* increase padding on wider screens for better spacing */
   }
 
   img {
-    width: 4.5rem;
+    width: 4.5rem; /* larger avatar size on larger viewports */
   }
 
   h1 {
-    font-size: 1.5rem;
-    margin: 0;
-    padding: 0;
+    font-size: 1.5rem;  /* larger title on larger screens */
+    margin: 0;          /* keep reset */
+    padding: 0;         /* keep reset */
   }
 }

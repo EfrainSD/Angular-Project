@@ -27,6 +27,9 @@ export class UserComponent
 {
   // SIGNALS: It is a way to notify Angular when an attribute changes its value and use that for something else
   // selectedUser = signal(randomUser); // This attribute is accessible in the component's HTML
+  // IMPORTANT: In this case, the variables are read-only; we cannot change them later in this way
+  // avatar = input.required<string>(); // We can specify what type it is and also mark it as mandatory
+  // name = input<string>(''); // If it is not mandatory, we can give it a default value
 
   // ANOTHER OPTION: Use @Input to receive data from outside the component (MOST COMMON)
   // @Input({ required: true }) id!: string;
@@ -38,12 +41,7 @@ export class UserComponent
   // Another option would be to create a single object with those characteristics
   @Input( { required: true }) user! : UserInterface;
 
-  // Now let's create the same variable but using signal
-  // IMPORTANT: In this case, the variables are read-only; we cannot change them later in this way
-  // avatar = input.required<string>(); // We can specify what type it is and also mark it as mandatory
-  // name = input<string>(''); // If it is not mandatory, we can give it a default value
-
-  // Now with signals, we can use computed so that it only runs when the value of selectedUser changes
+  // SIGNALS: Can use computed so that it only runs when the value of selectedUser changes
   // imagePath = computed(() => 'assets/users/' + this.avatar());
 
   // Being would be the normal form without signals
@@ -52,7 +50,7 @@ export class UserComponent
   // Let's create a custom event to notify when a user is selected
   @Output() selectUser = new EventEmitter<string>(); // We can also specify the data type, which is recommended but optional
 
-  // Another option is to use signals
+  // SIGNALS: Other way to create an output
   // selectUser = output<string>(); // There is no need to use new, as it does this internally (it is mandatory to specify the type of data it outputs)
 
   onSelectUser()

@@ -1,41 +1,43 @@
 div {
-  border-radius: 6px;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  border-radius: 6px; /* Rounds the corners of the container */
+  overflow: hidden;   /* Hides any content that overflows the container (keeps corners clean) */
 }
 
+/* Button base style */
 button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.5rem;
-  background-color: #433352;
-  color: #c3b3d1;
-  border: none;
-  font: inherit;
-  cursor: pointer;
-  width: 100%;
-  min-width: 10rem;
-  text-align: left;
+  display: flex;               /* Uses flexbox to align inner content horizontally */
+  align-items: center;         /* Vertically centers items inside the button */
+  gap: 0.5rem;                 /* Adds space between child elements (e.g., icon and text) */
+  padding: 0.35rem 0.5rem;     /* Adds inner spacing (top/bottom, left/right) */
+  background-color: #433352; /* Sets the button background color */
+  color: #FFFFFF;            /* Sets text color to white */
+  border: none;                /* Removes default browser border */
+  font: inherit;               /* Inherits font from parent element */
+  cursor: pointer;             /* Changes cursor to pointer when hovered */
+  width: 100%;                 /* Makes the button take full width of its container */
+  min-width: 10rem;            /* Ensures a minimum width for consistency */
+  text-align: left;            /* Aligns text to the left side */
 }
 
+/* Button hover and active states */
 button:hover,
 button:active,
 .active {
   background-color: #9965dd;
-  color: #150722;
+  color: #000000;             
 }
 
+/* Image style (e.g., user avatar or icon) */
 img {
-  width: 2rem;
-  object-fit: contain;
-  border-radius: 50%;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  width: 2rem;               /* Sets a fixed width for the image */
+  object-fit: contain;       /* Ensures image keeps aspect ratio and fits inside box */
+  border-radius: 50%;        /* Makes the image circular */
 }
 
+/* Text inside button (or general span styling) */
 span {
-  margin: 0;
-  padding: 0;
-  font-size: 0.8rem;
-  font-weight: normal;
+  margin: 0;                 /* Removes default outer spacing */
+  padding: 0;                /* Removes default inner spacing */
+  font-size: 0.8rem;         
+  font-weight: normal;       /* Ensures normal font weight */
 }

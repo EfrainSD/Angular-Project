@@ -1,39 +1,39 @@
-// Importamos el decorador Component desde Angular
+// Import the Component decorator from Angular.
 import { Component, Output } from '@angular/core';
 
-// Para añadir el ngfor, tendríamos que importalo y dentro de los imports del componente añadirlo
+// To add ngfor and ngif -> Import it and add it within the component imports
 // import { NgFor, NgIf } from '@angular/common';
 
-// Importamos los componentes para usarlos en este componente principal
+// Import the components to use them in this main component.
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
-import { TaskComponent } from './task/task.component';
+import { TasksComponent } from './tasks/tasks.component';
 import { DUMMY_USERS } from './user/dummy-users';
 
-// Creamosla información del componente conocido como decorador para añadir metadatos
+// Create the component information
 @Component({
-  selector: 'app-root', // Nombre del componente que se usará en el .html
+  selector: 'app-root', // Name of the component to be used in the .html to reference it
   standalone: true,
-  imports: [HeaderComponent, UserComponent, TaskComponent],
-  templateUrl: './app.component.html', // Enlace a su HTML
-  styleUrls: ['./app.component.css'], // Enlace a su CSS
+  imports: [HeaderComponent, UserComponent, TasksComponent],
+  templateUrl: './app.component.html', 
+  styleUrls: ['./app.component.css'],
 })
 
-// Una vez creado le damos un nombre a la clase por la cual lo exportamos
+// We give the class a name for which we export it
 export class AppComponent
 {
   users = DUMMY_USERS;
 
-  selectedUserId?: string; // Variable para almacenar el usuario seleccionado
+  selectedUserId?: string; // Variable to store the selected user
 
-  get selectedUserName() // Usamos un getter para obtener el nombre del usuario seleccionado
+  get selectedUserName() // Use a getter to obtain the name of the selected user.
   {
-      return this.users.find(u => u.id === this.selectedUserId)?.name; // Buscamos el usuario por su id y si no lo encuentra ponemos una cadena vacía
+      return this.users.find(u => u.id === this.selectedUserId)?.name; // Search for the user by their ID, and if we don't find them return undefined
   }
 
-  // Vamos a crear una función que al pulsar a un usuario se active y nos envía el id de ese usuario
-  onUserSelected(userId: string) // Es olbigatorio decir el tipo de dato que recibe
+  // Ccreate a function that activates when a user clicks on it and sends us that user's ID
+  onUserSelected(userId: string) // It is obligatory to specify the type of data received
   {
-    this.selectedUserId = userId; // Guardamos el id del usuario seleccionado
+    this.selectedUserId = userId;
   }
 }

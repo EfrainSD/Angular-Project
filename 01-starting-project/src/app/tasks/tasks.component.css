@@ -1,0 +1,68 @@
+#tasks {
+  padding: 1rem;                 /* Adds inner spacing around the content */
+  border-radius: 8px;            /* Rounds the corners for a softer look */
+  max-height: 60vh;              /* Limits height to 60% of the viewport */
+  background-color: #3a2c54;
+}
+
+/* Header section inside the task container */
+header {
+  display: flex;
+  justify-content: space-between;/* Spaces elements evenly (left and right) */
+  align-items: flex-start;       /* Aligns items at the top */
+  margin-bottom: 2rem;           /* Adds space below the header */
+  gap: 1rem;                     /* Adds space between header elements */
+}
+
+/* Task section title */
+h2 {
+  margin: 0;                    
+  font-size: 0.9rem;             /* Sets font size slightly smaller than normal */
+  width: 60%;                    /* Restricts width to prevent overflow */
+  text-wrap: balance;            /* Balances text across lines for better readability */
+}
+
+/* Menu element (container for buttons) */
+menu {
+  margin: 0;                     
+  padding: 0;                    /* Removes default padding */
+}
+
+/* Buttons inside the menu */
+menu button {
+  font: inherit;                 /* Inherits font from parent */
+  cursor: pointer;
+  background-color: #9965dd;   /* Sets button background color */
+  border-radius: 4px;            /* Rounds button corners slightly */
+  border: none;
+  padding: 0.35rem 0.8rem;       /* Adds inner spacing (vertical and horizontal) */
+  font-size: 0.9rem;             /* Sets font size */
+}
+
+menu button:hover,
+menu button:active {
+  background-color: #a565dd;
+}
+
+/* Task list container */
+ul {
+  list-style: none;              /* Removes default list bullets */
+  margin: 1rem 0;                /* Adds vertical spacing */
+  padding: 0;            
+  display: flex;         
+  flex-direction: column;  
+  gap: 1rem;                
+  max-height: 50vh;              /* Limits height to 50% of viewport */
+  overflow: auto;                /* Enables scrolling if tasks exceed max height */
+}
+
+/* Responsive styles for larger screens */
+@media (min-width: 768px) {
+  h2 {
+    font-size: 1.25rem;          /* Increases title size for larger screens */
+  }
+
+  menu {
+    width: auto;                 /* Allows menu width to adjust automatically */
+  }
+}

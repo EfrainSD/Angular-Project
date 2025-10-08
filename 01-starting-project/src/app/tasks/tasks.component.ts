@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'user-task',
+  selector: 'tasks',
   standalone: true,
   imports: [],
-  templateUrl: './task.component.html',
-  styleUrl: './task.component.css'
+  templateUrl: './tasks.component.html',
+  styleUrl: './tasks.component.css'
 })
-export class TaskComponent
+export class TasksComponent
 {
   @Input({ required: true }) userName!: string;
 }

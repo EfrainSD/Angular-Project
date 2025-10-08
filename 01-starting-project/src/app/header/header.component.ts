@@ -8,6 +8,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./header.component.css'], // Path to the component's CSS file
 })
 
-// Export the class and give it a name.
+// Export the class with a name.
 export class HeaderComponent {}
-
