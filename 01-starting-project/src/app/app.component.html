@@ -8,6 +8,7 @@
             <li>
                 <app-user
                     [user]="user"
+                    [isSelected]="user.id === selectedUserId"
                     (selectUser)="onUserSelected($event)"/>
             </li>
         }
@@ -26,9 +27,9 @@
     </ul>
 
     <!-- IF -->
-    @if (selectedUserName)
+    @if (selectedUser)
     {
-        <tasks [userName]="selectedUserName" />
+        <tasks [userId]="selectedUser.id" [userName]="selectedUser.name" />
     }
     @else
     {

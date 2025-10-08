@@ -1,19 +1,5 @@
 import { Component, Input, computed, input, Output, EventEmitter, output } from '@angular/core'; // In uppercase letters it is a “decoration”; in lowercase letters it is a special function
-
-// To define data types, we can create them as follows
-type User = {
-  id : string;
-  avatar : string;
-  name : string;
-}
-
-// Another option is to create an interface instead of a type (MORE COMMON)
-interface UserInterface
-{
-  id : string;
-  avatar : string;
-  name : string;
-}
+import { type UserInterface } from './user.model';
 
 @Component({
   selector: 'app-user',
@@ -39,7 +25,9 @@ export class UserComponent
   // @Input({ required: true }) name!: string;
 
   // Another option would be to create a single object with those characteristics
-  @Input( { required: true }) user! : UserInterface;
+  @Input({ required: true }) user! : UserInterface;
+  
+  @Input({ required: true}) isSelected!: boolean;
 
   // SIGNALS: Can use computed so that it only runs when the value of selectedUser changes
   // imagePath = computed(() => 'assets/users/' + this.avatar());

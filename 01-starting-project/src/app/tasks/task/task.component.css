@@ -1,70 +1,41 @@
-/* Main container for the tasks section */
-#tasks {
-  padding: 1rem;                 /* Adds inner space between the content and the container edges */
-  border-radius: 8px;            /* Rounds the corners of the container */
-  max-height: 60vh;              /* Limits the container height to 60% of the viewport height */
-  overflow: auto;                /* Adds scrollbars if content is taller than the container */
-  background-color: #3a2c54;
+/* Styles for each article element (content block) */
+article {
+  padding: 1rem;                        /* Adds inner space around the article content */
+  color: #25113d;                    
+  background-color: #bf9ee5;
 }
 
-/* Header section inside the tasks container */
-header {
-  display: flex;                 /* Uses Flexbox to arrange header elements horizontally */
-  justify-content: space-between;/* Places elements at opposite ends (left & right) */
-  align-items: flex-start;       /* Aligns elements to the top of the container */
-  margin-bottom: 2rem;           /* Adds space below the header */
-  gap: 1rem;                     /* Adds space between header elements */
-}
-
-/* Section title inside the header */
+/* Title inside the article */
 h2 {
+  margin: 0;                         /* Removes default margin for a cleaner layout */
+}
+
+time {
+  color: #3c2c50;
+}
+
+.actions {
+  text-align: right;                 /* Aligns the buttons to the right side */
   margin: 0;
-  font-size: 0.9rem;             /* Sets smaller title size for compact layout */
-  width: 60%;                    /* Limits title width to 60% of header */
-  text-wrap: balance;            /* Keeps text lines balanced for better readability */
 }
 
-/* Styles for the menu element (container for buttons) */
-menu {
-  margin: 0;
-  padding: 0;
+/* Styling for buttons inside the .actions container */
+.actions button {
+  font: inherit;
+  font-size: 0.9rem;                 /* Sets slightly smaller button text */
+  cursor: pointer;
+  background-color: #380774;
+  color: #decdf2;
+  border-radius: 4px;                /* Slightly rounds button corners */
+  padding: 0.5rem 1.5rem;            /* Adds inner spacing for better button size */
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;         /* Smooth transition for hover effects */
 }
 
-/* Styles for the buttons inside the menu */
-menu button {
-  font: inherit; 
-  cursor: pointer;               /* Changes cursor to pointer when hovering */
-  background-color: #9965dd; 
-  border-radius: 4px;
-  border: none;                  /* Removes default button border */
-  padding: 0.35rem 0.8rem;       /* Adds inner spacing for better clickable area */
-  font-size: 0.9rem;             /* Sets readable button text size */
-}
-
-menu button:hover,
-menu button:active {
-  background-color: #a565dd;
-}
-
-/* Styles for the unordered list (task items) */
-ul {
-  list-style: none;              /* Removes bullet points from list items */
-  margin: 1rem 0;                /* Adds vertical spacing around the list */
-  padding: 0;                    /* Removes inner padding */
-  display: flex;                 /* Uses Flexbox for layout */
-  flex-direction: column;        /* Stacks list items vertically */
-  gap: 1rem;                     /* Adds space between each list item */
-  max-height: 50vh;              /* Limits list height to half the viewport */
-  overflow: auto;                /* Enables scrolling if tasks exceed visible space */
-}
-
-/* Responsive styles for larger screens (tablets and up) */
-@media (min-width: 768px) {
-  h2 {
-    font-size: 1.25rem;          /* Increases title size for better visibility */
-  }
-
-  menu {
-    width: auto;                 /* Allows menu to adjust naturally to its content */
-  }
+/* Button hover and active states */
+.actions button:hover,
+.actions button:active {
+  background-color: #4a0774;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
 }

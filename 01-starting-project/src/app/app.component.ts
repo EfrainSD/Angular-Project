@@ -26,9 +26,9 @@ export class AppComponent
 
   selectedUserId?: string; // Variable to store the selected user
 
-  get selectedUserName() // Use a getter to obtain the name of the selected user.
+  get selectedUser() // Use a getter to obtain the name of the selected user.
   {
-      return this.users.find(u => u.id === this.selectedUserId)?.name; // Search for the user by their ID, and if we don't find them return undefined
+      return this.users.find(u => u.id === this.selectedUserId); // Search for the user by their ID, and if we don't find them return undefined
   }
 
   // Ccreate a function that activates when a user clicks on it and sends us that user's ID
