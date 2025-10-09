@@ -1,8 +1,7 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
-import { DUMMY_TASKS } from "./dummy-tasks";
 import { NewTaskComponent } from "./new-task/new-task.component";
-import { type NewTaskData } from './task/task.model';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'tasks',
@@ -18,38 +17,21 @@ export class TasksComponent
   
   isAddingTask = false;
 
-  tasks = DUMMY_TASKS;
-
-  get selectedUserTasks()
-  {
-    // Filter is a Javascript fcuntion to obtain only those that belong to the selected user in this case
-    return this.tasks.filter(task => task.userId === this.userId);
-  }
-
-  onCompletedTask(taskId: string)
-  {
-    this.tasks = this.tasks.filter(task => task.id !== taskId); // Remove the completed task from the list
-  }
-
   onAddNewTask()
   {
     this.isAddingTask = true;
   }
 
-  onCancelAddTask()
+  onCloseAddTask()
   {
     this.isAddingTask = false;
   }
 
-  onAddTask(newTaskData: NewTaskData)
+  // This constructor runs automatically. And inside we put the instance we want it to create -> DEPENDENCY INJECTION
+  constructor(private tasksService: TasksService) { } // Set it to private or public, automatically creates a property with that name
+
+  get selectedUserTasks()
   {
-    // If we want to put it at the end -> PUSH, but if we want to put it at the beginning, we use UNSHIFT
-    this.tasks.unshift({
-      id: new Date().getTime().toString(),
-      userId: this.userId,
-      title: newTaskData.title,
-      summary: newTaskData.summary,
-      dueDate: newTaskData.dueDate
-    });
+    return this.tasksService.getUserTasks(this.userId);
   }
 }

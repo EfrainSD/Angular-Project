@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, signal } from '@angular/core';
 import { type NewTaskData } from '../task/task.model';
 import { FormsModule } from '@angular/forms'; // If we import this FormsModule, it also prevents the form from being sent via the link, and it will automatically remain on the client side
+import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'new-task',
@@ -11,6 +12,7 @@ import { FormsModule } from '@angular/forms'; // If we import this FormsModule, 
 })
 export class NewTaskComponent
 {
+  @Input({ required: true }) userId!: string;
   newTaskTitle = '';
   newTaskSummary = '';
   newTaskDueDate = '';
@@ -20,23 +22,25 @@ export class NewTaskComponent
   // newTaskSummary = signal('');
   // newTaskDueDate = signal('');
 
-  @Output() cancel = new EventEmitter<void>();
-  @Output() addTask = new EventEmitter<(NewTaskData)>();
+  @Output() close = new EventEmitter<void>();
 
-  onCancel()
+  // Since we have already created the service with a builder here, we simply call it
+  private tasksService = inject(TasksService);
+
+  onClose()
   {
-    this.cancel.emit();
+    this.close.emit();
   }
 
   onAddTask()
   {
-    this.addTask.emit(
+    this.tasksService.addTask(
     {
       title: this.newTaskTitle,
       summary: this.newTaskSummary,
       dueDate: this.newTaskDueDate
-    });
+    }, this.userId);
 
-    this.onCancel(); // To close the form after adding the task
+    this.onClose(); // To close the form after adding the task
   }
 }
