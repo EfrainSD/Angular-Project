@@ -1,0 +1,4 @@
+div {
+  border-radius: 6px; /* Rounds the corners of the container */
+  overflow: hidden;   /* Hides any content that overflows the container (keeps corners clean) */
+}

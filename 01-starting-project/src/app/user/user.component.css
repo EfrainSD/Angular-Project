@@ -1,8 +1,3 @@
-div {
-  border-radius: 6px; /* Rounds the corners of the container */
-  overflow: hidden;   /* Hides any content that overflows the container (keeps corners clean) */
-}
-
 /* Button base style */
 button {
   display: flex;               /* Uses flexbox to align inner content horizontally */

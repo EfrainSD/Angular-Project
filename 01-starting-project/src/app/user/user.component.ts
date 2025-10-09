@@ -1,10 +1,11 @@
 import { Component, Input, computed, input, Output, EventEmitter, output } from '@angular/core'; // In uppercase letters it is a “decoration”; in lowercase letters it is a special function
 import { type UserInterface } from './user.model';
+import { CardComponent } from "../ui/card/card.component";
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [],
+  imports: [CardComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })

@@ -1,4 +1,4 @@
-<div>
+<ui-card>
     <!-- Give the button a function to be executed when pressed -->
     <button [class.active]="isSelected" (click)="onSelectUser()"> <!-- If isSelected is true -> that CSS class will be added to the button, and if not, it will not -->
         <!-- If the image fails -> The name will appear instead -->
@@ -7,4 +7,4 @@
         <!-- With double curly brackets {{ }} you can reference any element in the .ts file -->
         <span>{{ user.name }}</span>
     </button>
-</div>
+</ui-card>
