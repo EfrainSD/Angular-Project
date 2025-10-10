@@ -1,0 +1,10 @@
+<ui-card>
+    <article>
+        <h2>{{ task.title }}</h2>
+        <time>{{ task.dueDate | date: 'fullDate' }}</time> <!-- This “DatePipe” transforms the date into an easier-to-read format. It can be modified to display however we want -->
+        <p>{{ task.summary }}</p>
+        <p class="actions">
+            <button (click)="onTaskCompleted()">Completed</button>
+        </p>
+    </article>
+</ui-card>

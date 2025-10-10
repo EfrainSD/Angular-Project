@@ -1,0 +1,26 @@
+<app-header />
+
+<main>
+    <ul id = "users-list">
+        <!-- FOR: The track is obligatory. It serves to assign each object an identifier, so that if the list is dynamic, Angular can efficiently remove and add objects. -->
+        @for (user of users; track user.id)
+        {
+            <li>
+                <app-user
+                    [user]="user"
+                    [isSelected]="user.id === selectedUserId"
+                    (selectUser)="onUserSelected($event)"/>
+            </li>
+        }
+    </ul>
+
+    <!-- IF -->
+    @if (selectedUser)
+    {
+        <tasks [userId]="selectedUser.id" [userName]="selectedUser.name" />
+    }
+    @else
+    {
+        <h1 id="fallback-text">Select a user</h1>
+    }
+</main>

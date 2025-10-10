@@ -1,0 +1,41 @@
+/* Styles for each article element (content block) */
+article {
+  padding: 1rem;                        /* Adds inner space around the article content */
+  color: #25113d;                    
+  background-color: #bf9ee5;
+}
+
+/* Title inside the article */
+h2 {
+  margin: 0;                         /* Removes default margin for a cleaner layout */
+}
+
+time {
+  color: #3c2c50;
+}
+
+.actions {
+  text-align: right;                 /* Aligns the buttons to the right side */
+  margin: 0;
+}
+
+/* Styling for buttons inside the .actions container */
+.actions button {
+  font: inherit;
+  font-size: 0.9rem;                 /* Sets slightly smaller button text */
+  cursor: pointer;
+  background-color: #380774;
+  color: #decdf2;
+  border-radius: 4px;                /* Slightly rounds button corners */
+  padding: 0.5rem 1.5rem;            /* Adds inner spacing for better button size */
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;         /* Smooth transition for hover effects */
+}
+
+/* Button hover and active states */
+.actions button:hover,
+.actions button:active {
+  background-color: #4a0774;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}

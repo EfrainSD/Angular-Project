@@ -1,0 +1,23 @@
+<section id="tasks">
+    <header>
+        <h2> {{ userName }}'s Tasks </h2>
+        <menu>
+            <button (click)="onAddNewTask()">Add Task</button>
+        </menu>
+    </header>
+
+    <ul>
+        <!-- Only go through the tasks that belong to the selected user -->
+        @for (task of selectedUserTasks; track task.id)
+        {
+            <li>
+                <task [task]="task"/>
+            </li>
+        }
+    </ul>
+</section>
+
+@if (isAddingTask)
+{
+    <new-task [userId]="userId" (close)="onCloseAddTask()"/>
+}
